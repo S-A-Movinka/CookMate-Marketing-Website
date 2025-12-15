@@ -7,8 +7,8 @@ const AdSection = () => {
 
             <div className="ad-content-wrapper" data-aos="zoom-in" data-aos-duration="800">
                 <img 
-                    src="public/AD.png"   // The path to ad image
-                    alt="Promotional Image for CookMate App" 
+                    src={"AD.png"}   // The path to ad image
+                    alt={"Promotional Image for CookMate App"}
                     className="ad-image"
                 />
 
