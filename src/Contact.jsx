@@ -5,9 +5,9 @@ import { Instagram, Mail } from "lucide-react";
 const Contact = () => {
   return (
     <section id="contact" className="contact-section">
-      <div className="contact-container" data-aos="fade-left" data-aos-duration="1000" >
+      <div className="contact-container"  >
 
-        <div className="contact-header">
+        <div className="contact-header" data-aos="fade-left" data-aos-duration="1000">
           <h2>Get in Touch</h2>
         </div>
 
@@ -15,12 +15,13 @@ const Contact = () => {
           className="contact-form"
           action="https://api.web3forms.com/submit"
           method="POST"
+          data-aos="fade-left" data-aos-duration="1000"
         >
 
           <input type="hidden" name="access_key" value="c67b90d9-af3b-4c2a-ac4a-09c665a1f4f2" />
           <input type="hidden" name="to_email" value="cookmate.lk@gmail.com" />
 
-          <div className="form-group-grid">
+          <div className="form-group-grid" >
 
             <div className="input-field">
               <label htmlFor="fullName">Full Name</label>

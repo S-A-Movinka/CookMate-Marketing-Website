@@ -42,7 +42,7 @@ const Features = () => {
       
       
       
-      <div className="features-grid" >
+      <div className="features-grid">
         {featureList.map((item, index) => (
           
           <div 
