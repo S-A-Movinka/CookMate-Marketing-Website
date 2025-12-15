@@ -1,0 +1,22 @@
+import React from 'react';
+import './App.css';
+
+// --- 1. Navbar Component ---src/App.jsx
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <div className="logo">
+        <img src="/Logo.png" alt="CookMate logo"/>CookMate
+      </div>
+      <ul className="nav-links">
+        <li><a href="#home" >Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+
+export default Navbar;
