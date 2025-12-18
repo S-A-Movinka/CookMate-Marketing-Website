@@ -16,7 +16,7 @@ const Footer = () => {
 
         {/* Center Section: Copyright */}
         <div className="footer-center">
-          <p className="copyright">© 2024 CookMate. All Rights Reserved.</p>
+          <p className="copyright">© 2025 CookMate. All Rights Reserved.</p>
         </div>
 
         {/* Right Section: Social/Contact Icons */}
@@ -24,7 +24,7 @@ const Footer = () => {
           
           {/* Instagram Link  */}
           <a 
-            href="https://www.instagram.com/cookmate.lk/" 
+            href="https://www.instagram.com/cookmate_lk?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="social-link" // Add this class for styling
