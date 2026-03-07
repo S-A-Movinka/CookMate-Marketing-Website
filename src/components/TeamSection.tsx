@@ -12,7 +12,7 @@ const team = [
   { name: "Yeheni Dodanwela", role: "Full-Stack Developer", desc: "Builds end-to-end features across frontend, backend, and API integrations.", image: member2Image, linkedin: "https://lk.linkedin.com/in/yeheni-dodanwela-800808318", github: "https://github.com/yehenidodanwela" },
   { name: "Nethasha Fernando", role: "AI Engineer", desc: "Develops and improves AI models for recipe generation and smart recommendations.", image: member3Image, linkedin: "https://www.linkedin.com/in/nethasha-fernando-/", github: "https://github.com/Nethasha-Fernando" },
   { name: "Dewmi Bandara", role: "Full-Stack Developer", desc: "Designs the database, develops APIs, and implements full-stack platform modules.", image: member4Image, linkedin: "https://linkedin.com/in/dewmi-dilsara-472955332", github: "https://github.com/Dewmi-dilsara" },
-  { name: "Yashnendri Senevirathna", role: "Full-Stack Developer", desc: "Implements backend authentication flows and supports core server-side functionality.", image: member5Image, linkedin: "#", github: "https://github.com/yashendrisenevirathna-design" },
+  { name: "Yashnendri Senevirathna", role: "Full-Stack Developer", desc: "Implements backend authentication flows and supports core server-side functionality.", image: member5Image, linkedin: "https://www.linkedin.com/in/yashendri-senevirathna-044930305/", github: "https://github.com/yashendrisenevirathna-design" },
   { name: "Amandi Movinka", role: "Full-Stack Developer", desc: "Builds frontend authentication experiences and user-facing product features.", image: member6Image, linkedin: "https://www.linkedin.com/in/s-a-movinka/", github: "https://github.com/S-A-Movinka" },
 ];
 
