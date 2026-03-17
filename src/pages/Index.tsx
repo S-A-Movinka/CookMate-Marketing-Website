@@ -6,6 +6,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import IoTSection from "@/components/IoTSection";
 import AppScreenshots from "@/components/AppScreenshots";
 import MascotSection from "@/components/MascotSection";
+import PricingPlansSection from "@/components/PricingPlansSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
@@ -24,6 +25,7 @@ const Index = () => (
       <IoTSection />
       <AppScreenshots />
       <MascotSection />
+      <PricingPlansSection />
       <BenefitsSection />
       <TeamSection />
       <FAQSection />

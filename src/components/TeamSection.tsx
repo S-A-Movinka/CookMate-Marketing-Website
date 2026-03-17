@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { User, Linkedin, Github } from "lucide-react";
-import member1Image from "@/assets/Januki.png";
-import member2Image from "@/assets/Yeheni.png";
-import member3Image from "@/assets/Nethasha.png";
-import member4Image from "@/assets/Dewmi.png";
-import member5Image from "@/assets/Yashendri.png";
-import member6Image from "@/assets/Amandi.png";
+import member1Image from "@/assets/1.jpg";
+import member2Image from "@/assets/2.png";
+import member3Image from "@/assets/3.jpg";
+import member4Image from "@/assets/4.jpg";
+import member5Image from "@/assets/5.jpg";
+import member6Image from "@/assets/6.jpg";
 
 const team = [
   { name: "Januki Liyanapathirana", role: "Project Lead & IoT Engineer", desc: "Leads the project and integrates CookMate's IoT temperature monitoring system.", image: member1Image, linkedin: "https://linkedin.com/in/januki-liyanapathirana-a74780337", github: "https://github.com/JK-19-jjk" },

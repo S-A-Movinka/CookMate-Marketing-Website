@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import logo from "@/assets/Logo.png";
 
 const navLinks = [
   { label: "Features", href: "#features" },
+  { label: "Pricing", href: "#pricing" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "IoT Device", href: "#iot-device" },
   { label: "Team", href: "#team" },
@@ -53,7 +55,7 @@ const Navbar = () => {
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <Button size="sm" asChild>
-            <a href="#download">Download App</a>
+            <Link to="/coming-soon">Download App</Link>
           </Button>
         </div>
 
@@ -84,7 +86,7 @@ const Navbar = () => {
               </a>
             ))}
             <Button size="sm" asChild>
-              <a href="#download" onClick={() => setOpen(false)}>Download App</a>
+              <Link to="/coming-soon" onClick={() => setOpen(false)}>Download App</Link>
             </Button>
           </div>
         </div>

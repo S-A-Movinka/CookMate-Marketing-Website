@@ -3,6 +3,7 @@ import { Instagram, Linkedin } from "lucide-react";
 
 const footerLinks = [
   { label: "Features", href: "#features" },
+  { label: "Pricing", href: "#pricing" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "IoT Device", href: "#iot-device" },
   { label: "Team", href: "#team" },
