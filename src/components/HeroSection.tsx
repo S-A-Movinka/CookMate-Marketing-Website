@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Download, ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.png";
 import heroBg2 from "@/assets/hero-bg-2.png";
@@ -69,8 +70,10 @@ const HeroSection = () => {
             Unlock smart recipe ideas based on what’s already in your kitchen. CookMate combines AI recipe generation with a smart IoT device to guide you step-by-step through every meal — from Sri Lankan classics to global favourites.
           </p>
           <div className="flex flex-wrap gap-4" id="download">
-            <Button size="lg" className="gap-2 shadow-lg shadow-primary/20 dark:shadow-xl dark:shadow-black/30">
-              <Download size={18} /> Download App
+            <Button size="lg" className="gap-2 shadow-lg shadow-primary/20 dark:shadow-xl dark:shadow-black/30" asChild>
+              <Link to="/coming-soon">
+                <Download size={18} /> Download App
+              </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="bg-white/60 border-white/70 text-foreground hover:bg-white/80 hover:text-foreground dark:bg-white/10 dark:border-white/50 dark:text-white dark:hover:bg-white/20 dark:hover:text-white">
               <a href="#how-it-works" className="gap-2 inline-flex items-center">

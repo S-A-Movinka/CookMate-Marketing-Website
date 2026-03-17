@@ -10,72 +10,89 @@ import {
   SlidersHorizontal,
   Sparkles,
   Thermometer,
+  ShoppingCart,
+  UserCheck,
+  UserPlus,
+  Wifi,
   type LucideIcon,
 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
 
-type WorkflowStep = {
-  icon: LucideIcon;
-  title: string;
-  subtitle: string;
-  description: string;
-  eta: string;
-  outcomes: string[];
+
+const initialChecks = {
+  install: false,
+  signup: false,
+  buyPremium: false,
+  iotProfile: false,
+  iotConnect: false,
+  iotFollow: false,
+  iotConfig: false,
 };
 
-const workflowSteps: WorkflowStep[] = [
-  {
-    icon: Download,
-    title: "Install CookMate",
-    subtitle: "Set up in under a minute",
-    description: "Download CookMate and quickly create your kitchen profile so recommendations are tailored from the first session.",
-    eta: "1 min",
-    outcomes: ["App ready on mobile", "Account linked to your kitchen", "Personal profile saved"],
-  },
+
+const infoSteps = [
   {
     icon: Carrot,
     title: "Select Ingredients",
-    subtitle: "Pick what you already have",
-    description: "Choose available ingredients from your kitchen so CookMate can generate relevant recipe ideas instantly.",
-    eta: "30 sec",
-    outcomes: ["Ingredient-based matching", "Reduced food waste", "Faster recipe discovery"],
+    subtitle: "Choose available ingredients from your kitchen so CookMate can generate relevant recipe ideas instantly.",
+    details: [
+      "Ingredient-based matching",
+      "Reduce food waste",
+      "Faster recipe discovery",
+    ],
   },
   {
     icon: SlidersHorizontal,
     title: "Set Preferences",
-    subtitle: "Allergies and session cooking options",
-    description: "Set allergies once during onboarding and update them anytime. Meal type, cuisine type, diet preferences, and number of servings are selected for each cooking session.",
-    eta: "1 min",
-    outcomes: ["Allergies saved and editable", "Session-based cooking preferences", "Safer personalized suggestions"],
+    subtitle: "Set allergies, meal type, cuisine, diet, and servings for each session.",
+    details: [
+      "Allergies saved and editable",
+      "Session-based cooking preferences",
+      "Safer personalized suggestions",
+    ],
   },
   {
     icon: Sparkles,
     title: "AI Recipes",
-    subtitle: "Smart recipe generation",
-    description: "CookMate AI generates recipe options based on your ingredients and selected preferences for that session.",
-    eta: "Instant",
-    outcomes: ["Personalized recipe list", "Session-aware results", "Quick best-match suggestions"],
+    subtitle: "CookMate AI generates recipe options based on your ingredients and preferences.",
+    details: [
+      "Personalized recipe list",
+      "Session-aware results",
+      "Quick best-match suggestions",
+    ],
   },
   {
     icon: ChefHat,
-    title: "Choose and Start",
-    subtitle: "Begin guided cooking",
-    description: "Choose your preferred recipe and start cooking with clear step-by-step guidance in the app.",
-    eta: "Live",
-    outcomes: ["Guided cooking flow", "Cleaner recipe execution", "Better consistency in results"],
-  },
-  {
-    icon: Thermometer,
-    title: "IoT Assist",
-    subtitle: "Real-time temperature support",
-    description: "During cooking, the IoT module tracks temperature and provides alerts to help maintain safer and accurate heat control.",
-    eta: "Continuous",
-    outcomes: ["Live temperature tracking", "Safety alerts", "Improved cooking accuracy"],
+    title: "Choose and Start Cooking",
+    subtitle: "Begin guided cooking with clear step-by-step instructions.",
+    details: [
+      "Guided cooking flow",
+      "Cleaner recipe execution",
+      "Better consistency in results",
+    ],
   },
 ];
 
+
 const HowItWorks = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const current = workflowSteps[activeStep];
+  const [checks, setChecks] = useState(initialChecks);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  // All required steps checked
+  const canShowSuccess =
+    checks.install &&
+    checks.signup &&
+    checks.buyPremium &&
+    checks.iotProfile &&
+    checks.iotConnect &&
+    checks.iotFollow &&
+    checks.iotConfig;
+
+  // If user unticks any required step, hide success
+  if (showSuccess && !canShowSuccess) {
+    setShowSuccess(false);
+  }
 
   return (
     <section id="how-it-works" className="section-padding bg-warm-cream">
@@ -87,11 +104,11 @@ const HowItWorks = () => {
           className="text-center mb-14"
         >
           <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs md:text-sm font-semibold text-primary mb-4">
-            Product Walkthrough
+            CookMate Guidance
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How CookMate Works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">How to Get Started</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Inspired by modern SaaS marketing flows: select a step, preview what happens, and understand the value before you download.
+            Follow these steps to unlock the full CookMate experience. Tick off each as you go!
           </p>
         </motion.div>
 
@@ -101,69 +118,92 @@ const HowItWorks = () => {
           viewport={{ once: true }}
           className="rounded-3xl border border-border/70 bg-card/70 backdrop-blur-sm p-4 md:p-6 lg:p-8 shadow-xl"
         >
-          <div className="grid gap-5 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-8">
-            <div className="space-y-2">
-              {workflowSteps.map((step, index) => {
-                const isActive = index === activeStep;
-                return (
-                  <button
-                    key={step.title}
-                    type="button"
-                    onClick={() => setActiveStep(index)}
-                    className={`w-full text-left rounded-2xl border px-4 py-3 transition-all ${isActive ? "border-primary/40 bg-primary/10 shadow-md" : "border-border/70 bg-background/80 hover:border-primary/30 hover:bg-primary/5"}`}
-                    aria-current={isActive ? "step" : undefined}
-                    aria-label={`Step ${index + 1}: ${step.title}`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className={`mt-0.5 h-10 w-10 rounded-xl flex items-center justify-center ${isActive ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"}`}>
-                        <step.icon size={20} />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">Step {index + 1}</p>
-                        <h3 className="font-semibold text-sm md:text-base leading-snug">{step.title}</h3>
-                        <p className="text-xs md:text-sm text-muted-foreground mt-1">{step.subtitle}</p>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="space-y-6">
+              {/* Step 1: Install CookMate */}
+              <div className="rounded-2xl border border-primary/20 bg-background/80 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <Download className="text-primary" size={22} />
+                  <h3 className="font-semibold text-lg">1. Install CookMate</h3>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Checkbox checked={checks.install} onCheckedChange={(v) => setChecks((c) => ({ ...c, install: !!v }))} id="install" />
+                  <label htmlFor="install" className="text-sm">App ready on mobile</label>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Checkbox checked={checks.signup} onCheckedChange={(v) => setChecks((c) => ({ ...c, signup: !!v }))} id="signup" />
+                  <label htmlFor="signup" className="text-sm">Sign up or sign in – personal profile saved</label>
+                </div>
+              </div>
+
+              {/* Step 2: Buy Premium Plan (Optional) */}
+              <div className="rounded-2xl border border-primary/20 bg-background/80 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <ShoppingCart className="text-primary" size={22} />
+                  <h3 className="font-semibold text-lg">2. Buy Premium Plan <span className="text-xs font-normal text-primary">(Optional)</span></h3>
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Checkbox checked={checks.buyPremium} onCheckedChange={(v) => setChecks((c) => ({ ...c, buyPremium: !!v }))} id="buyPremium" />
+                  <label htmlFor="buyPremium" className="text-sm">Premium plan activated</label>
+                </div>
+              </div>
+
+              {/* Step 3: Connect IoT Device (Optional, with sub-steps) */}
+              <div className="rounded-2xl border border-primary/20 bg-background/80 p-5">
+                <div className="flex items-center gap-3 mb-2">
+                  <Wifi className="text-primary" size={22} />
+                  <h3 className="font-semibold text-lg">3. Connect IoT Device <span className="text-xs font-normal text-primary">(Optional)</span></h3>
+                </div>
+                <div className="flex flex-col gap-2 mb-2 ml-2">
+                  <div className="flex items-center gap-2">
+                    <Checkbox checked={checks.iotProfile} onCheckedChange={(v) => setChecks((c) => ({ ...c, iotProfile: !!v }))} id="iotProfile" />
+                    <label htmlFor="iotProfile" className="text-sm">Go to My Profile</label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Checkbox checked={checks.iotConnect} onCheckedChange={(v) => setChecks((c) => ({ ...c, iotConnect: !!v }))} id="iotConnect" />
+                    <label htmlFor="iotConnect" className="text-sm">Connect IoT device</label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Checkbox checked={checks.iotFollow} onCheckedChange={(v) => setChecks((c) => ({ ...c, iotFollow: !!v }))} id="iotFollow" />
+                    <label htmlFor="iotFollow" className="text-sm">Follow the instructions pop up on your phone</label>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Checkbox checked={checks.iotConfig} onCheckedChange={(v) => setChecks((c) => ({ ...c, iotConfig: !!v }))} id="iotConfig" />
+                    <label htmlFor="iotConfig" className="text-sm">Configuration successful</label>
+                  </div>
+                </div>
+                <div className="text-xs text-muted-foreground mt-1">(Optional for Free/Pro plans)</div>
+              </div>
+
+              {canShowSuccess && !showSuccess && (
+                <Button size="lg" className="mt-4 w-full" onClick={() => setShowSuccess(true)}>
+                  Finish Setup
+                </Button>
+              )}
+              {showSuccess && (
+                <div className="rounded-xl border border-green-400 bg-green-50 text-green-900 p-4 text-center font-semibold text-lg flex flex-col items-center gap-2">
+                  <CheckCircle2 className="text-green-500" size={28} />
+                  You have successfully set up CookMate! Happy cooking! 🍳
+                </div>
+              )}
             </div>
 
-            <div className="rounded-2xl border border-border/70 bg-background p-5 md:p-7">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
-                      Step {activeStep + 1} of {workflowSteps.length}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs md:text-sm text-secondary-foreground">
-                      <Clock3 size={14} /> {current.eta}
-                    </span>
+            {/* Info Steps */}
+            <div className="space-y-6">
+              {infoSteps.map((step, idx) => (
+                <div key={step.title} className="rounded-2xl border border-border/70 bg-background/90 p-5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <step.icon className="text-primary" size={22} />
+                    <h3 className="font-semibold text-lg">{idx + 4}. {step.title}</h3>
                   </div>
-
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">{current.title}</h3>
-                  <p className="text-muted-foreground md:text-lg mb-6">{current.description}</p>
-
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {current.outcomes.map((item) => (
-                      <div key={item} className="flex items-start gap-2 rounded-xl border border-border/70 bg-card p-3">
-                        <CheckCircle2 className="text-primary mt-0.5" size={18} />
-                        <span className="text-sm md:text-base">{item}</span>
-                      </div>
+                  <div className="text-sm text-muted-foreground mb-2">{step.subtitle}</div>
+                  <ul className="list-disc ml-6 text-sm text-foreground/90">
+                    {step.details.map((d) => (
+                      <li key={d}>{d}</li>
                     ))}
-                  </div>
-
-                  <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-                    <PlayCircle size={16} className="text-primary" /> Select any step on the left to preview the full flow.
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -171,5 +211,4 @@ const HowItWorks = () => {
     </section>
   );
 };
-
 export default HowItWorks;
