@@ -24,7 +24,7 @@ const plans = [
   {
     color: "blue",
     name: "Pro Plan",
-    price: "LKR 1,500 / month",
+    price: "LKR 5,000 / month",
     bestFor: "Regular home cooks",
     features: [
       { label: "100 AI recipe generations", included: true },
@@ -41,7 +41,7 @@ const plans = [
   {
     color: "purple",
     name: "Premium Plan (Smart Kitchen)",
-    price: "LKR 3,000 / month",
+    price: "LKR 10,000 / month",
     bestFor: "Advanced users & smart kitchens",
     features: [
       { label: "Unlimited AI recipe generations", included: "infinity" },
